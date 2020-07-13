@@ -14,6 +14,10 @@
  *= require_self
  */
 
- #main{
+#main{
   padding-top: 70px;
+}
+
+.app-name{
+  font-size: 25px;
 }

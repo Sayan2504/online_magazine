@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:edit, :update, :destroy]
+  before_action :set_article, only: [:edit, :update, :destroy, :show]
 
   def create
     @article = Article.new(article_params)
@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @articles = @articles.order("updated_at DESC")
   end
 
   def new

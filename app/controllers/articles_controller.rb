@@ -29,11 +29,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comments = @article.comments.all
   end
 
   def update
     if @article.update(article_params)
-      redirect_to articles_path, flash: { success: "Article has been successfully updated" }
+      redirect_to article_path(@article.id), flash: { success: "Article has been successfully updated" }
     else
       render "edit"
     end

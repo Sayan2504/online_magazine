@@ -18,12 +18,12 @@
         <div class="form-row">
           <div class="col-xs-12 order-2 order-sm-1 col-sm-3">
             <% if !@article.new_record? %>
-              <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", title: "Delete?" %>
+              <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", title: "Delete Article?" %>
             <% end %>
           </div>
           <div class="col-xs-12 text-right order-1 order-sm-2 col-sm-9">
             <%= link_to "Cancel", articles_path, class: "btn btn-light btn-xs-block", title: "Cancel" %>
-            <%= f.submit yield(:button_text), class: "btn btn-primary btn-xs-block", data: { disable_with: "Saving..." }, title: "Create article" %>
+            <%= f.submit yield(:button_text), class: "btn btn-primary btn-xs-block", data: { disable_with: "Saving..." } %>
           </div>
         </div>
       <% end %>

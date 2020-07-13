@@ -2,7 +2,7 @@
 
 <section class="table-header mb-3">
   <div class="row">
-    <div class="col-6 article-title">
+    <div class="col-6 article-and-comment-heading">
       <h2 class="text-center"><%= @article.title.upcase %></h2>
       <h5 class="text-center">Author: <%= @article.author %></h5>
     </div>
@@ -25,3 +25,4 @@
     </div>
   </div>
 </section>
+<%= render "comments" %>

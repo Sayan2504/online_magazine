@@ -1,0 +1,29 @@
+<div class="col-sm-12 col-md-8 col-lg-7 col-xl-6">
+  <div class="card">
+    <div class="card-body">
+      <%= form_for @comment, html: { multipart: true } do |f| %>
+        <%= render "shared/error_messages", object: @comment %>
+        <div class="form-group">
+          <%= f.label :commenter , "Commenter" %>
+          <%= f.text_field :commenter, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Name of the Commenter", title: "Enter Commenter name", maxlength: 50, minlength: 2 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :comment , "Comment" %>
+          <%= f.text_area :comment, rows: "4", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Write Comment here", title: "Write Comment here", minlength: 2 %>
+        </div>
+        <%= f.hidden_field :article_id, value: @article.id %>
+        <div class="form-row">
+          <div class="col-xs-12 order-2 order-sm-1 col-sm-3">
+            <% if !@comment.new_record? %>
+              <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", title: "Delete Comment?" %>
+            <% end %>
+          </div>
+          <div class="col-xs-12 text-right order-1 order-sm-2 col-sm-9">
+            <%= link_to "Cancel", article_path(@article), class: "btn btn-light btn-xs-block", title: "Cancel" %>
+            <%= f.submit yield(:button_text), class: "btn btn-primary btn-xs-block", data: { disable_with: "Saving..." } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

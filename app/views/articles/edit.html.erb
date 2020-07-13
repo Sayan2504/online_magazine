@@ -1,2 +1,9 @@
-<h1>Articles#edit</h1>
-<p>Find me in app/views/articles/edit.html.erb</p>
+<% provide(:title, "Edit Article") %>
+<% provide(:button_text, "Update") %>
+
+<div class="row justify-content-center">
+  <div class="col-sm-12">
+    <h3 class="text-center heading">Edit Article</h3>
+  </div>
+  <%= render "form" %>
+</div>

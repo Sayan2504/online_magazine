@@ -8,4 +8,5 @@ class Comment < ApplicationRecord
 
   validates :commenter, presence: true, length: { maximum: 100, minimum: 2 }, format: { with: VALID_COMMENTER_REGEX }
   validates :comment, presence: true, length: { minimum: 1 }
+  validates :article_id, presence: true
 end

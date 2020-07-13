@@ -1,2 +1,32 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<% provide(:title, "Articles") %>
+
+<section class="table-header mb-3">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h3 class="heading">Articles</h3>
+    </div>
+  </div>
+</section>
+<table class="table table-hover" width="100%">
+  <thead class="thead-light">
+    <tr>
+      <th>ID</th>
+      <th>Author</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each_with_index do |article, index| %>
+      <tr>
+        <td class="heading"><%= index+1 %></td>
+        <td class="heading"><%= article.author %></td>
+        <td class="heading"><%= article.title %></td>
+        <td class="edit-delete-article">
+          <%= link_to "Edit Article", edit_article_path(article), class: "btn btn-sm btn-primary", title: "Edit article" %>
+          <%= link_to "Delete Article", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger", title: "Delete?" %>
+        </td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>

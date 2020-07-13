@@ -1,0 +1,32 @@
+<div class="col-sm-12 col-md-8 col-lg-7 col-xl-6">
+  <div class="card">
+    <div class="card-body">
+      <%= form_for @article, html: { multipart: true } do |f| %>
+        <%= render "shared/error_messages", object: @article %>
+        <div class="form-group">
+          <%= f.label :author , "Article Author" %>
+          <%= f.text_field :author, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Name of the Author of the Article", title: "Enter Article Author name", maxlength: 100, minlength: 2 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title , "Article Title" %>
+          <%= f.text_field :title, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Title of the the Article", title: "Enter Article Title", maxlength: 100, minlength: 2 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :body , "Article Content" %>
+          <%= f.text_area :body, rows: "4", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Content of the the Article", title: "Enter Article Content", minlength: 2 %>
+        </div>
+        <div class="form-row">
+          <div class="col-xs-12 order-2 order-sm-1 col-sm-3">
+            <% if !@article.new_record? %>
+              <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", title: "Delete?" %>
+            <% end %>
+          </div>
+          <div class="col-xs-12 text-right order-1 order-sm-2 col-sm-9">
+            <%= link_to "Cancel", articles_path, class: "btn btn-light btn-xs-block", title: "Cancel" %>
+            <%= f.submit yield(:button_text), class: "btn btn-primary btn-xs-block", data: { disable_with: "Saving..." }, title: "Create article" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

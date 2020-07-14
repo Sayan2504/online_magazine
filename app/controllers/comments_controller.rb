@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     if @comment.save
-      redirect_to request.referrer, flash: { success: "Comment has been successfully created" }
+      redirect_to request.referrer
     else
       render "new"
     end

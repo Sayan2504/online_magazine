@@ -45,7 +45,7 @@
                   <%= f.text_field :comment, rows: "1", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Add a comment", title: "Write Comment here", minlength: 2 %>
                 </div>
                 <div class="col-xs-12 text-left col-sm-2">
-                  <%= f.submit "Add Comment", class: "btn btn-secondary btn-xs-block", title: "Create new Post" %>
+                  <%= f.submit "Add Comment", class: "btn btn-secondary btn-xs-block", title: "Add new comment", data: { disable_with: "Adding..." } %>
                 </div>
               </div>
             <% end %>

@@ -1,37 +1,22 @@
-<section class="container">            
-  <div class="row justify-content-center mt-4">
-    <% if @comments.present? %>
-      <div class="col-6 article-and-comment-heading">
-        <h3 class="text-center">Comments</h3>
-      </div>
-    <% else %>
-      <div class="col-6 article-and-comment-heading"> 
-        <h3 class="text-center text-muted"> No comments present</h3>
-      </div>
-    <% end %>
-    <div class="col-6 text-right mb-2">
-      <%= link_to "New Comment", new_comment_path( { article_id: @article.id } ), class: "btn btn-md btn-primary", title: "Write Comment" %>
-    </div>
-  </div>
-  <% @comments.each do |comment| %>
-    <div class="row justify-content-center">
-      <div class="col-xs-12 col-sm-12 ">
-        <div class="card card-body justify-content-flex-center">
-          <div class="row">
-            <div class="col-sm-12">
-              <span><strong><%= comment.commenter %>:</strong></span>
-              <span><%= comment.comment %></span>
-            </div>    
-          </div>
-          <div class="row">
-            <span class="col-sm-12">
-              <%= link_to "Reply", new_comment_path, class: "comment-options", title: "Reply to the Comment" %>
-              <%= link_to "Edit", edit_comment_path(comment), class: "comment-options", title: "Edit Comment" %>
-              <%= link_to "Delete", comment_path(comment), method: :delete, class: "comment-options", data: { confirm: "Are you sure?" }, title: "Delete comment" %>
-            </span>
-          </div>
+<% @comments.each do |comment| %>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-12 ">
+      <div class="card card-body justify-content-flex-center">
+        <div class="row">
+          <div class="col-sm-12">
+            <span><strong><%= comment.commenter %>:</strong></span>
+            <span><%= comment.comment %></span>
+          </div>    
         </div>
-      </div>   
-    </div>
-  <% end %>
-</section>  
+        <div class="row">
+          <span class="col-sm-12">
+            <%= link_to "Reply", new_comment_path, class: "comment-options", title: "Reply to the Comment" %>
+            <%= link_to "Edit", edit_comment_path(comment), class: "comment-options", title: "Edit Comment" %>
+            <%= link_to "Delete", comment_path(comment), method: :delete, class: "comment-options", data: { confirm: "Are you sure?" }, title: "Delete comment" %>
+          </span>
+        </div>
+      </div>
+    </div>   
+  </div>
+<% end %>
+  

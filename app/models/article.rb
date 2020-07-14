@@ -2,7 +2,7 @@ class Article < ApplicationRecord
   VALID_AUTHOR_NAME_REGEX = /\A[\sA-Za-z]*\z/i.freeze
   VALID_TITLE_REGEX = /\A[\s\w\d]*\z/i.freeze
 
-  has_many :comments
+  has_many :comments, as: :commentable
 
   after_validation { self.author = self.author.squish }
   after_validation { self.title = self.title.squish }

@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :find_commentable
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.article_id = Article.find(@comment.article_id).id
+    @comment = @commentable.comments.new(comment_params)
     if @comment.save
-      redirect_to article_path(@comment.article_id), flash: { success: "Comment has been successfully created" }
+      redirect_to request.referrer, flash: { success: "Comment has been successfully created" }
     else
       render "new"
     end
@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @article = Article.find(params[:article_id])
     @comment = Comment.new
   end
 
@@ -37,10 +36,15 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:commenter, :comment, :article_id)
+    params.require(:comment).permit(:commenter, :comment)
   end
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def find_commentable
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable = Article.find_by_id(params[:article_id]) if params[:article_id]
   end
 end

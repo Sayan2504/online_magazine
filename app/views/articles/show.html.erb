@@ -27,18 +27,38 @@
 </section>
 <section class="container">            
   <div class="row justify-content-center mt-4">
-    <% if @comments.present? %>
-      <div class="col-6 article-and-comment-heading">
-        <h3 class="text-center">Comments</h3>
-      </div>
-    <% else %>
-      <div class="col-6 article-and-comment-heading"> 
-        <h3 class="text-center text-muted"> No comments given yet</h3>
-      </div>
-    <% end %>
-    <div class="col-6 text-right mb-2">
-      <%= link_to "New Comment", new_comment_path( { article_id: @article.id } ), class: "btn btn-md btn-primary", title: "Write Comment" %>
+    <div class="col-6">
+      <h3 class="text-center">Comments</h3>
     </div>
   </div>
-  <%= render "comments" %>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-12 ">
+      <div class="card card-header justify-content-flex-center">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= form_for [@article, Comment.new] do |f| %>
+              <div class="form-row pb-0">
+                <div class="form-group col-sm-12 col-md-3">
+                  <%= f.text_field :commenter, rows: "1", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter your name to comment", title: "Enter your name", maxlength: 50, minlength: 2 %>
+                </div>
+                <div class="form-group col-sm-12 col-md-7">
+                  <%= f.text_field :comment, rows: "1", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Add a comment", title: "Write Comment here", minlength: 2 %>
+                </div>
+                <div class="col-xs-12 text-left col-sm-2">
+                  <%= f.submit "Add Comment", class: "btn btn-secondary btn-xs-block", title: "Create new Post" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xs-12 col-sm-12 ">
+            <ul class="comment-list">
+              <%= render partial: "comments/comment", collection: @article.comments %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

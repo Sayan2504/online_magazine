@@ -1,0 +1,37 @@
+<section class="container">            
+  <div class="row justify-content-center mt-4">
+    <div class="col-6">
+      <h3 class="text-center">Comments</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-12 ">
+      <div class="card card-header justify-content-flex-center">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= form_for [@article, Comment.new] do |f| %>
+              <div class="form-row pb-0">
+                <div class="form-group col-sm-12 col-md-3">
+                  <%= f.text_field :commenter, rows: "1", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter your name to comment", title: "Enter your name", maxlength: 50, minlength: 2 %>
+                </div>
+                <div class="form-group col-sm-12 col-md-7">
+                  <%= f.text_field :comment, rows: "1", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Add a comment", title: "Write Comment here", minlength: 2 %>
+                </div>
+                <div class="col-xs-12 text-left col-sm-2">
+                  <%= f.submit "Add Comment", class: "btn btn-secondary btn-xs-block", title: "Add new comment", data: { disable_with: "Adding..." } %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xs-12 col-sm-12">
+            <ul class="comment-list" id="commment_thread">
+              <%= render partial: "comments/comment", collection: @article.comments %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

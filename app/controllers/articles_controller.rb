@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:edit, :update, :destroy, :show]
+  before_action :set_article, only: [:edit, :update, :destroy, :show, :comments_reload]
 
   def create
     @article = Article.new(article_params)
@@ -37,6 +37,10 @@ class ArticlesController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def comments_section_reload
+    render partial: "articles/comments"
   end
 
   private

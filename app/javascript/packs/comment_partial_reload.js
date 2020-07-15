@@ -1,6 +1,6 @@
-$( document ).on("turbolinks:load", function()
+$(document).on("turbolinks:load", function()
 {
    setInterval(function() {
-     $("#commment_thread").load("/articles/comments_reload");
- }, 2000);
+     $("#commment_section").load("#comments_section_reload #commment_section");
+ }, 60000);
 });

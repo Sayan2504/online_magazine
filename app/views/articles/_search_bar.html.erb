@@ -1,0 +1,36 @@
+<div class="jumbotron pt-4 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="form-inline justify-content-center">
+          <%= form_tag(articles_path, method: "get") do %>
+            <% if params[:title].present? %>
+              <%= hidden_field_tag :title, params[:title] %>
+            <% end %>
+            <% if params[:author].present? %>
+              <%= text_field_tag :author, params[:author], class: "search-text-field", placeholder: "Enter name of Author", title: "Search article by author name" %>
+            <% else %>
+              <%= text_field_tag :author, params[:author], class: "search-text-field", required: true, placeholder: "Enter name of Author", title: "Search article by author name" %>
+            <% end %>
+            <%= submit_tag "Search author", name: nil, class: "btn btn-dark" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="form-inline justify-content-center">
+          <%= form_tag(articles_path, method: "get") do %>
+            <% if params[:author].present? %>
+              <%= hidden_field_tag :author, params[:author] %>
+            <% end %>
+            <% if params[:title].present? %>
+              <%= text_field_tag :title, params[:title], class: "search-text-field", placeholder: "Enter Article Title", title: "Search article by title" %>
+            <% else %>
+              <%= text_field_tag :title, params[:title], class: "search-text-field", required: true, placeholder: "Enter Article Title", title: "Search article by title" %>
+            <% end %>
+            <%= submit_tag "Search title", name: nil, class: "btn btn-dark" %>
+          <% end %>
+        </div>
+      </div>
+    </div> 
+  </div>    
+</div>

@@ -1,14 +1,18 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.edit-delete-article{
+.edit-delete-article {
   text-align: right;
 }
 
-.article-and-comment-heading{
+.article-and-comment-heading {
   left: 280px;
 }
 
-.article-content{
+.article-content {
   font-size: 18px;
+}
+
+.search-text-field {
+  width: 350px;;
 }

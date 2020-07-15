@@ -20,8 +20,13 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
-    @articles = @articles.order("updated_at DESC")
+    @articles = Article.all.order("updated_at DESC")
+    if params[:author]
+      @articles = @articles.article_author(params[:author])
+    end 
+    if params[:title]
+      @articles = @articles.article_title(params[:title])
+    end
   end
 
   def new

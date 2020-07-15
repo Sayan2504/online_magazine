@@ -11,4 +11,7 @@ class Article < ApplicationRecord
   validates :author, presence: true, length: { maximum: 50, minimum: 2 }, format: { with: VALID_AUTHOR_NAME_REGEX }
   validates :title, presence: true, length: { maximum: 60, minimum: 2 }, format: { with: VALID_TITLE_REGEX }
   validates :body, presence: true, length: { minimum: 2 }
+
+  scope :article_author, ->(name) { where("author LIKE ?", "%#{name}%") }
+  scope :article_title, ->(title) { where("title LIKE ?", "%#{title}%") }
 end

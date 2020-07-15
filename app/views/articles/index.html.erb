@@ -8,7 +8,7 @@
         <h3 class="heading">Articles</h3>
       </div>
       <div class="col-sm-12 col-md-6 text-md-right">
-        <%= link_to "Create New Article", new_article_path, class: "btn btn-primary", title: "Create new Article" %>
+        <%= link_to "Create New Article", new_article_path, class: "btn btn-primary", title: "Create a new Article" %>
       </div>
     </div>
   </section>
@@ -24,12 +24,12 @@
     <tbody>
       <% @articles.each_with_index do |article, index| %>
         <tr>
-          <td class="heading"><%= index+1 %></td>
-          <td class="heading"><%= article.author %></td>
-          <td class="heading"><%= article.title %></td>
+          <td><%= index+1 %></td>
+          <td id="author-column"><%= article.author.truncate(20) %></td>
+          <td id="title-column"><%= article.title.truncate(50) %></td>
           <td class="edit-delete-article">
-            <%= link_to "Show Content", article_path(article), class: "btn btn-sm btn-primary", title: "Show Article content" %>
-            <%= link_to "Delete Article", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger", title: "Delete Article?" %>
+            <%= link_to "Show Content", article_path(article), class: "btn btn-sm btn-primary", title: "Show details of the Article" %>
+            <%= link_to "Delete Article", article_path(article), method: :delete, data: { confirm: "Are you sure to delete this Article?" }, class: "btn btn-sm btn-danger", title: "Delete Article?" %>
           </td>  
         </tr>
       <% end %>

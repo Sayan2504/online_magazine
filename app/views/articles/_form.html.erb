@@ -5,15 +5,15 @@
         <%= render "shared/error_messages", object: @article %>
         <div class="form-group">
           <%= f.label :author , "Article Author" %>
-          <%= f.text_field :author, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Name of the Author of the Article", title: "Enter Article Author name", maxlength: 50, minlength: 2 %>
+          <%= f.text_field :author, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Name of the Author", title: "Name of the Author can contain atmost 50 characters(only spaces and alphabets)", maxlength: 50, minlength: 2 %>
         </div>
         <div class="form-group">
           <%= f.label :title , "Article Title" %>
-          <%= f.text_field :title, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Title of the the Article", title: "Enter Article Title", maxlength: 60, minlength: 2 %>
+          <%= f.text_field :title, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Title of the the Article", title: "Title can contain atmost 100 characters(only spaces, alphabets and digits)", maxlength: 100, minlength: 2 %>
         </div>
         <div class="form-group">
           <%= f.label :body , "Article Content" %>
-          <%= f.text_area :body, rows: "4", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Content of the the Article", title: "Enter Article Content", minlength: 2 %>
+          <%= f.text_area :body, rows: "4", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Content of the the Article", title: "Article Content must have atleast 2 characters", minlength: 2 %>
         </div>
         <div class="form-row">
           <div class="col-xs-12 order-2 order-sm-1 col-sm-3">

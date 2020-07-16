@@ -15,6 +15,7 @@
           <%= f.label :body , "Article Content" %>
           <%= f.text_area :body, rows: "4", class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Enter Content of the the Article", title: "Article Content must have atleast 2 characters", minlength: 2 %>
         </div>
+        <%= f.hidden_field :user_id, value: @user.id %>
         <div class="form-row">
           <div class="col-xs-12 order-2 order-sm-1 col-sm-3">
             <% if !@article.new_record? %>

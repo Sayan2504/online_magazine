@@ -3,12 +3,9 @@
 <%= render "search_bar" %>
 <% if @articles.present? %>
   <section class="table-header mb-3">
-    <div class="row">
-      <div class="col-sm-12 col-md-6">
+    <div class="row text-center">
+      <div class="col-sm-12 col-md-12">
         <h3 class="heading">Articles</h3>
-      </div>
-      <div class="col-sm-12 col-md-6 text-md-right">
-        <%= link_to "Create New Article", new_article_path, class: "btn btn-primary", title: "Create a new Article" %>
       </div>
     </div>
   </section>
@@ -29,7 +26,13 @@
           <td id="title-column"><%= article.title.truncate(50) %></td>
           <td class="edit-delete-article">
             <%= link_to "Show Content", article_path(article), class: "btn btn-sm btn-primary", title: "Show details of the Article" %>
-            <%= link_to "Delete Article", article_path(article), method: :delete, data: { confirm: "Are you sure to delete this Article?" }, class: "btn btn-sm btn-danger", title: "Delete Article?" %>
+            <% if logged_in? %>
+              <% if article.user_id == current_user.id %>
+                <%= link_to "Delete Article", article_path(article), method: :delete, data: { confirm: "Are you sure to delete this Article?" }, class: "btn btn-sm btn-danger", title: "Delete Article?" %>
+              <% else %>
+                <button type="button" class="btn btn-sm btn-secondary" disabled>Delete Article</button>
+              <% end %>
+            <% end %>
           </td>  
         </tr>
       <% end %>

@@ -8,7 +8,11 @@
     </div>
     <div class="col-6 text-right">
       <div class="row btn-toolbar" style="display: block">
-        <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-md btn-primary", title: "Edit this Article" %>
+        <% if logged_in? %>
+          <% if @article.user_id == current_user.id %>
+            <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-md btn-primary", title: "Edit this Article" %>
+          <% end %>
+        <% end %>
         <%= link_to "Articles List", articles_path, class: "btn btn-md btn-secondary", title: "Show list of Articles" %>
       </div>
     </div>

@@ -12,7 +12,7 @@
     <ul class="navbar-nav ml-auto">
       <% if logged_in? %>
         <li class="nav-item active">
-          <%= link_to "Create New Article", new_article_path, class: "nav-link", title: "Edit your Email id/Password" %>
+          <%= link_to "Create New Article", new_article_path, class: "nav-link", title: "Create a new Article" %>
         </li>
         <li class="nav-item active">
           <%= link_to "Edit credentials", edit_user_path(current_user), class: "nav-link", title: "Edit your Email id/Password" %>

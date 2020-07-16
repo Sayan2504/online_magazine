@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :show, :update]
+  before_action :set_user, only: [:edit, :update]
 
   def create
     @user = User.new(user_params)
@@ -23,12 +23,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-  end
-
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), flash: { success: "Email/Password has been successfully updated" }
+      redirect_to articles_path, flash: { success: "Email/Password has been successfully updated" }
     else
       render "edit"
     end
